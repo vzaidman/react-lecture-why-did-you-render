@@ -1,8 +1,6 @@
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 
-class FatherComponent extends PureComponent {
-
-  static whyDidYouRender = true
+class FatherComponent extends Component {
 
   componentDidMount() {
     console.log('FatherComponent Did Mount')

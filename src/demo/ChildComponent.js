@@ -1,6 +1,28 @@
 import React, {Component} from 'react'
 import {times} from 'lodash'
 
+const numberOfPixels = 1000
+
+function getRandomRgbColor(){
+  const red = Math.random() * 255
+  const green = Math.random() * 255
+  const blue = Math.random() * 255
+  return `rgb(${red},${green},${blue})`
+}
+
+function HugeList(){
+  const color1 = getRandomRgbColor()
+  const color2 = getRandomRgbColor()
+  return (
+    <div className="pixel-container">
+      {times(numberOfPixels, i => {
+        const backgroundColor = Math.round(Math.random()) === 1 ? color1 : color2
+        return <div key={i} style={{backgroundColor}}/>
+      })}
+    </div>
+  )
+}
+
 class ChildComponent extends Component {
 
   componentDidMount() {
@@ -17,15 +39,10 @@ class ChildComponent extends Component {
 
   render() {
     console.log('ChildComponent Render')
-
-    let num = Math.random() * 1000
-    times(Math.pow(10, 7), () => num = Math.sin(num))
-
     return (
       <div>
         ChildComponent
-        <br/>
-        Random sum: {num}
+        <HugeList/>
       </div>
     )
   }

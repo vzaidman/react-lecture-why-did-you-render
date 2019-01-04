@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import ChildComponent from './ChildComponent'
 import FatherComponent from './FatherComponent'
 
-const staticChild = <ChildComponent/>
-
 export default class Demo extends Component {
   state = {counter: 0}
   render() {
+    const childShouldHaveFather = this.state.counter % 2 === 0
     return (
       <div className="demo">
         <button onClick={
@@ -15,9 +14,13 @@ export default class Demo extends Component {
           Increase Counter ({this.state.counter})
         </button>
 
-        <FatherComponent>
-          {staticChild}
-        </FatherComponent>
+        {childShouldHaveFather ? (
+          <FatherComponent>
+            <ChildComponent/>
+          </FatherComponent>
+        ) : (
+          <ChildComponent/>
+        )}
       </div>
     )
   }

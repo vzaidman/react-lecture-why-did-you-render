@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ChildComponent from './ChildComponent'
 import FatherComponent from './FatherComponent'
 
+const staticChild = <ChildComponent/>
+
 export default class Demo extends Component {
   state = {counter: 0}
   render() {
@@ -14,7 +16,7 @@ export default class Demo extends Component {
         </button>
 
         <FatherComponent>
-          <ChildComponent/>
+          {staticChild}
         </FatherComponent>
       </div>
     )

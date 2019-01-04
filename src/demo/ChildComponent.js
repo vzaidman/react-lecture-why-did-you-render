@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {times} from 'lodash'
 
 class ChildComponent extends Component {
 
@@ -16,9 +17,15 @@ class ChildComponent extends Component {
 
   render() {
     console.log('ChildComponent Render')
+
+    let num = Math.random() * 1000
+    times(Math.pow(10, 7), () => num = Math.sin(num))
+
     return (
       <div>
         ChildComponent
+        <br/>
+        Random sum: {num}
       </div>
     )
   }

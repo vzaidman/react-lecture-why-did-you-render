@@ -2,6 +2,18 @@ import React, {PureComponent} from 'react'
 
 class FatherComponent extends PureComponent {
 
+  shouldComponentUpdate(nextProps) {
+    // This is roughly what PureComponent does.
+    return Object.keys({...nextProps, ...this.props})
+      .some(propName => {
+        if (nextProps[propName] !== this.props[propName]) {
+          debugger
+          return true
+        }
+        return false
+      })
+  }
+
   componentDidMount() {
     console.log('FatherComponent Did Mount')
   }

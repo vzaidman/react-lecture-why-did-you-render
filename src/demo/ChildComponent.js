@@ -42,17 +42,21 @@ class ChildComponent extends Component {
 
     const {name, lastName, occupation, password, repeatPassword, countryCode, telephone, score, avatar} = this.state
 
+    // move this to componentDidUpdate with debounce
     localStorage.setItem('form-state', JSON.stringify(this.state))
 
+    // move to a password component
     const savedPrevPasswords = localStorage.getItem('prev-passwords')
     const prevPasswords = savedPrevPasswords ? JSON.parse(savedPrevPasswords) : []
     const passwordUsedBefore = prevPasswords.indexOf(password) !== -1
 
+    // move to a telephone component
     const parsedTelephone = parsePhoneNumberFromString(telephone)
     const telephoneError = telephone && (
       !parsedTelephone || parsedTelephone.country !== countryCode
     )
 
+    // move to the review component
     const reviewMouseHandler = e => {
       e.preventDefault()
       if (e.buttons) {
@@ -67,6 +71,7 @@ class ChildComponent extends Component {
       telephone && !telephoneError
     )
 
+    // move to country component
     const countryListArray = uniqBy([
       [countryCode, countryList[countryCode]],
       ...Object.entries(countryList)

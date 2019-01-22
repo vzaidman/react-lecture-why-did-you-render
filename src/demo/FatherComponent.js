@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
-class FatherComponent extends Component {
+class FatherComponent extends PureComponent {
 
   componentDidMount() {
     console.log('FatherComponent Did Mount')

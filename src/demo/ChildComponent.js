@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import {times} from 'lodash'
 
 const numberOfPixels = 1000
@@ -23,7 +23,7 @@ function HugeList(){
   )
 }
 
-class ChildComponent extends PureComponent {
+class ChildComponent extends Component {
 
   componentDidMount() {
     console.log('ChildComponent Component Did Mount')
